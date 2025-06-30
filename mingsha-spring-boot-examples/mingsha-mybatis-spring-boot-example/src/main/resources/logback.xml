@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!--日志格式应用spring boot默认的格式，也可以自己更改-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!--定义日志存放的位置，默认存放在项目启动的相对路径的目录-->
+    <springProperty scope="context" name="LOG_PATH" source="logging.path" defaultValue="logs"/>
+
+    <!-- ***************************************** appender ************************************************* -->
+
+    <!--控制台打印-->
+    <appender name="STDOUT-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- ***************************************** root ************************************************* -->
+
+    <!--  -->
+    <root level="info">
+        <appender-ref ref="STDOUT-APPENDER"/>
+    </root>
+
+</configuration>

@@ -1,0 +1,8 @@
+logging:
+  path: logs
+  level:
+    root: debug
+    org.springframework: debug
+    org.springframework.boot: debug
+    com.github.trang: debug
+    executableSql: debug

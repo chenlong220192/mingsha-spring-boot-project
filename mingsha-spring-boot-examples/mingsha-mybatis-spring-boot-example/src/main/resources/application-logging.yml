@@ -1,0 +1,11 @@
+logging:
+  path: logs
+  level:
+    root: info
+    org.springframework: info
+    org.springframework.jdbc: info
+    org.springframework.boot: info
+    org.mybatis: info
+    com.alibaba.druid: info
+    com.github.trang: info
+    executableSql: info

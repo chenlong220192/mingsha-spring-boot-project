@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>site.mingsha.boot</groupId>
+        <artifactId>mingsha-spring-boot-project</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>mingsha-spring-boot</artifactId>
+    <version>${revision}</version>
+
+    <packaging>pom</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>${project.artifactId}-${project.version}</description>
+
+    <modules>
+        <module>mingsha-spring-boot-autoconfigures</module>
+        <module>mingsha-spring-boot-dependencies</module>
+        <module>mingsha-spring-boot-parent</module>
+        <module>mingsha-spring-boot-starters</module>
+    </modules>
+
+</project>

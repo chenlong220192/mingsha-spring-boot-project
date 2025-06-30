@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: mingsha-rocketmq-spring-boot-example
+  profiles:
+    include:
+      - loggging
+      - rocketmq
