@@ -1,0 +1,41 @@
+{
+  "groups": [
+    {
+      "name": "server.tomcat",
+      "type": "site.mingsha.boot.starter.tomcat.autoconfigure.MingshaTomcatProperties",
+      "sourceType": "site.mingsha.boot.starter.tomcat.autoconfigure.MingshaTomcatProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "server.tomcat.connection-timeout",
+      "type": "java.lang.Integer",
+      "description": "连接超时时间（毫秒）",
+      "defaultValue": 20000
+    },
+    {
+      "name": "server.tomcat.max-connections",
+      "type": "java.lang.Integer",
+      "description": "最大连接数",
+      "defaultValue": 8192
+    },
+    {
+      "name": "server.tomcat.accept-count",
+      "type": "java.lang.Integer",
+      "description": "接受队列大小",
+      "defaultValue": 100
+    },
+    {
+      "name": "server.tomcat.threads.max",
+      "type": "java.lang.Integer",
+      "description": "最大线程数",
+      "defaultValue": 200
+    },
+    {
+      "name": "server.tomcat.threads.min-spare",
+      "type": "java.lang.Integer",
+      "description": "最小空闲线程数",
+      "defaultValue": 10
+    }
+  ]
+} 

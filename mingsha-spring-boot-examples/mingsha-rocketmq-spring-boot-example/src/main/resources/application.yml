@@ -1,7 +1,13 @@
+# 服务器配置
+server:
+  port: 8080
+
+# 应用配置
 spring:
-  application:
-    name: mingsha-rocketmq-spring-boot-example
   profiles:
     include:
-      - loggging
-      - rocketmq
+      - logging
+      - actuator
+      - server
+  application:
+    name: mingsha-rocketmq-spring-boot-example 

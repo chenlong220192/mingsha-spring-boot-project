@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    include:
+      - logging
+      - actuator
+      - kafka
+      - server
+  application:
+    name: mingsha-kafka-spring-boot-example 

@@ -1,0 +1,29 @@
+# 标准 Spring Boot 日志配置
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: /data/logs/${spring.application.name}
+  level:
+    root: INFO
+    org.springframework: WARN
+  # 日志级别
+  level:
+    root: INFO
+    site.mingsha: DEBUG
+    org.springframework.web: DEBUG
+  # 日志格式
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+  # 日志文件
+  file:
+    name: logs/application.log
+  # Mingsha Logging 拦截器配置
+  interceptor-enabled: true
+  interceptor:
+    # 是否包含请求头
+    include-headers: true
+    # 是否包含请求体
+    include-body: true
+    # 请求体最大长度
+    max-body-length: 2048 

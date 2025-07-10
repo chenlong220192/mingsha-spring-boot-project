@@ -1,0 +1,29 @@
+{
+  "groups": [
+    {
+      "name": "management",
+      "type": "java.lang.Object",
+      "sourceType": "org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "management.endpoints.web.exposure.include",
+      "type": "java.lang.String",
+      "description": "暴露的端点，支持通配符 '*' 暴露所有端点",
+      "defaultValue": "*"
+    },
+    {
+      "name": "management.endpoint.health.show-details",
+      "type": "java.lang.String",
+      "description": "健康检查端点是否显示详细信息",
+      "defaultValue": "always"
+    },
+    {
+      "name": "management.server.port",
+      "type": "java.lang.Integer",
+      "description": "管理端点服务器端口",
+      "defaultValue": 8081
+    }
+  ]
+} 

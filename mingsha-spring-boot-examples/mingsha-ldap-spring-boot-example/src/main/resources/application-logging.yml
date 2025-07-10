@@ -1,0 +1,10 @@
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: /data/logs/${spring.application.name}
+  level:
+    root: INFO
+    org.springframework: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n" 

@@ -1,0 +1,58 @@
+{
+  "properties": [
+    {
+      "name": "management.endpoints.web.base-path",
+      "type": "java.lang.String",
+      "description": "管理端点的Web基础路径",
+      "defaultValue": "/actuator"
+    },
+    {
+      "name": "management.endpoints.web.cors.allowed-origins",
+      "type": "java.lang.String",
+      "description": "允许的CORS源",
+      "defaultValue": "*"
+    },
+    {
+      "name": "management.endpoints.web.cors.allowed-methods",
+      "type": "java.lang.String",
+      "description": "允许的HTTP方法",
+      "defaultValue": "GET"
+    },
+    {
+      "name": "management.endpoint.health.show-components",
+      "type": "java.lang.String",
+      "description": "是否显示健康检查组件详情",
+      "defaultValue": "never"
+    },
+    {
+      "name": "management.endpoint.info.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用info端点",
+      "defaultValue": true
+    },
+    {
+      "name": "management.endpoint.metrics.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用metrics端点",
+      "defaultValue": true
+    },
+    {
+      "name": "management.endpoint.env.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用env端点",
+      "defaultValue": false
+    },
+    {
+      "name": "management.endpoint.beans.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用beans端点",
+      "defaultValue": false
+    },
+    {
+      "name": "management.endpoint.mappings.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mappings端点",
+      "defaultValue": false
+    }
+  ]
+} 

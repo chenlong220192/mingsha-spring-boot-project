@@ -1,0 +1,43 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource",
+      "type": "site.mingsha.boot.starter.mybatis.autoconfigure.MingshaMybatisProperties",
+      "sourceType": "site.mingsha.boot.starter.mybatis.autoconfigure.MingshaMybatisProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.datasource.url",
+      "type": "java.lang.String",
+      "description": "数据库连接URL"
+    },
+    {
+      "name": "spring.datasource.username",
+      "type": "java.lang.String",
+      "description": "数据库用户名"
+    },
+    {
+      "name": "spring.datasource.password",
+      "type": "java.lang.String",
+      "description": "数据库密码"
+    },
+    {
+      "name": "spring.datasource.driver-class-name",
+      "type": "java.lang.String",
+      "description": "数据库驱动类名",
+      "defaultValue": "com.mysql.cj.jdbc.Driver"
+    },
+    {
+      "name": "spring.datasource.mapper-locations",
+      "type": "java.lang.String",
+      "description": "MyBatis Mapper 文件位置",
+      "defaultValue": "classpath:mapper/*.xml"
+    },
+    {
+      "name": "spring.datasource.type-aliases-package",
+      "type": "java.lang.String",
+      "description": "MyBatis 类型别名包"
+    }
+  ]
+} 

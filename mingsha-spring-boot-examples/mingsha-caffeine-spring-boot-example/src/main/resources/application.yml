@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    include:
+      - logging
+      - actuator
+      - caffeine
+      - server
+  application:
+    name: mingsha-caffeine-spring-boot-example 

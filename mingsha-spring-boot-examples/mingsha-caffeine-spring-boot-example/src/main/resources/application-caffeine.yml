@@ -1,0 +1,18 @@
+# Caffeine 缓存配置
+caffeine:
+  # 缓存配置
+  cache:
+    # 最大缓存条目数
+    maximum-size: 1000
+    # 写入后过期时间（秒）
+    expire-after-write: 3600
+    # 访问后过期时间（秒）
+    expire-after-access: 1800
+    # 是否启用统计
+    record-stats: true
+    # 是否启用弱引用
+    weak-keys: false
+    # 是否启用弱值引用
+    weak-values: false
+    # 是否启用软值引用
+    soft-values: false 

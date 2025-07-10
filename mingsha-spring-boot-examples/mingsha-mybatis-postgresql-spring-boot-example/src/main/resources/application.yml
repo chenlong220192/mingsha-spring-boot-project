@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    include:
+      - logging
+      - actuator
+      - mybatis
+      - datasource
+      - server
+  application:
+    name: mingsha-mybatis-spring-boot-example

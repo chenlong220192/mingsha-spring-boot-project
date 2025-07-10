@@ -1,0 +1,42 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+    info:
+      enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  health:
+    kafka:
+      enabled: true
+    defaults:
+      enabled: true
+    db:
+      enabled: false
+    redis:
+      enabled: false
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+        step: 1m
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+      percentiles:
+        http.server.requests: 0.5,0.95,0.99
+  info:
+    env:
+      enabled: true
+    git:
+      mode: full
+    build:
+      enabled: true 

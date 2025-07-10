@@ -1,0 +1,65 @@
+{
+  "groups": [
+    {
+      "name": "spring.rabbitmq",
+      "type": "site.mingsha.boot.starter.rabbitmq.autoconfigure.MingshaRabbitMQProperties",
+      "sourceType": "site.mingsha.boot.starter.rabbitmq.autoconfigure.MingshaRabbitMQProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.rabbitmq.host",
+      "type": "java.lang.String",
+      "description": "RabbitMQ服务器地址",
+      "defaultValue": "localhost"
+    },
+    {
+      "name": "spring.rabbitmq.port",
+      "type": "java.lang.Integer",
+      "description": "RabbitMQ服务器端口",
+      "defaultValue": 5672
+    },
+    {
+      "name": "spring.rabbitmq.username",
+      "type": "java.lang.String",
+      "description": "RabbitMQ用户名",
+      "defaultValue": "guest"
+    },
+    {
+      "name": "spring.rabbitmq.password",
+      "type": "java.lang.String",
+      "description": "RabbitMQ密码",
+      "defaultValue": "guest"
+    },
+    {
+      "name": "spring.rabbitmq.virtual-host",
+      "type": "java.lang.String",
+      "description": "虚拟主机",
+      "defaultValue": "/"
+    },
+    {
+      "name": "spring.rabbitmq.connection-timeout",
+      "type": "java.lang.Integer",
+      "description": "连接超时时间（毫秒）",
+      "defaultValue": 60000
+    },
+    {
+      "name": "spring.rabbitmq.requested-heart-beat",
+      "type": "java.lang.Integer",
+      "description": "请求心跳超时时间（毫秒）",
+      "defaultValue": 60
+    },
+    {
+      "name": "spring.rabbitmq.automatic-recovery-enabled",
+      "type": "java.lang.Boolean",
+      "description": "自动恢复连接",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.rabbitmq.network-recovery-interval",
+      "type": "java.lang.Long",
+      "description": "网络恢复间隔（毫秒）",
+      "defaultValue": 5000
+    }
+  ]
+} 

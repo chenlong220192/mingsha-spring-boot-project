@@ -18,9 +18,27 @@
 
     <packaging>pom</packaging>
 
-    <modules>
-        <module>mingsha-mybatis-spring-boot-example</module>
-        <module>mingsha-rocketmq-spring-boot-example</module>
-    </modules>
+    	<modules>
+		<module>mingsha-actuator-spring-boot-example</module>
+		<module>mingsha-caffeine-spring-boot-example</module>
+		<module>mingsha-elasticsearch-spring-boot-example</module>
+		<module>mingsha-logging-spring-boot-example</module>
+		<module>mingsha-mail-spring-boot-example</module>
+		<module>mingsha-mybatis-h2-spring-boot-example</module>
+		<module>mingsha-mybatis-mysql-spring-boot-example</module>
+		<module>mingsha-mybatis-postgresql-spring-boot-example</module>
+		<module>mingsha-rabbitmq-spring-boot-example</module>
+		<module>mingsha-redis-spring-boot-example</module>
+		<module>mingsha-rocketmq-spring-boot-example</module>
+		<module>mingsha-shardingsphere-spring-boot-example</module>
+		<module>mingsha-tomcat-spring-boot-example</module>
+		<module>mingsha-websocket-spring-boot-example</module>
+		<module>mingsha-zookeeper-spring-boot-example</module>
+		<module>mingsha-ldap-spring-boot-example</module>
+		<module>mingsha-aop-spring-boot-example</module>
+		<module>mingsha-mongodb-spring-boot-example</module>
+		<module>mingsha-solr-spring-boot-example</module>
+		<module>mingsha-kafka-spring-boot-example</module>
+	</modules>
 
 </project>

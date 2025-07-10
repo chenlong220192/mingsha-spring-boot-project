@@ -1,0 +1,14 @@
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 200
+      min-spare: 10
+    connection-timeout: 20000
+    max-connections: 8192
+    accept-count: 100
+    uri-encoding: UTF-8
+    compression:
+      enabled: true
+      mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+      min-response-size: 1024 

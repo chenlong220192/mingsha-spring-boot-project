@@ -1,0 +1,12 @@
+# Mail 默认配置
+spring:
+  mail:
+    host: localhost
+    port: 25
+    protocol: smtp
+    ssl: false
+    tls: false
+    connection-timeout: 5000
+    read-timeout: 5000
+    write-timeout: 5000
+    default-encoding: UTF-8 

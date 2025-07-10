@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    include:
+      - logging
+      - actuator
+      - server
+  application:
+    name: mingsha-zookeeper-spring-boot-example 

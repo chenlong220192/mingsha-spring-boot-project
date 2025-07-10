@@ -31,12 +31,36 @@ hs_err_pid*
 .settings
 target
 .DS_Store
+*.ipr
+*.iws
 
 # temp ignore
 *.cache
 *.diff
 *.patch
 *.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+*.pid
 
 # Maven ignore
 .flattened-pom.xml
+
+# Node.js
+node_modules/
+
+# Output
+/out/
+
+# Env files
+*.env
+*.local
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Log files
+*.log.*

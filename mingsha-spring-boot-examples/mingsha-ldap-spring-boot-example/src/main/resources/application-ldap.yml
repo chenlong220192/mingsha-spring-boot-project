@@ -1,0 +1,9 @@
+mingsha:
+  ldap:
+    enabled: true
+    url: ldap://localhost:389
+    base: dc=example,dc=com
+    manager-dn: cn=admin,dc=example,dc=com
+    manager-password: admin
+    connect-timeout: 3000
+    read-timeout: 3000 

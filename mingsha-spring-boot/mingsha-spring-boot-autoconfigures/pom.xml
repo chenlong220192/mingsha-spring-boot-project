@@ -18,7 +18,27 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>mingsha-test-spring-boot-autoconfigure</module>
+        <module>mingsha-actuator-spring-boot-autoconfigure</module>
+        <module>mingsha-tomcat-spring-boot-autoconfigure</module>
+        <module>mingsha-logging-spring-boot-autoconfigure</module>
+        <module>mingsha-mybatis-spring-boot-autoconfigure</module>
+        <module>mingsha-rocketmq-spring-boot-autoconfigure</module>
+        <module>mingsha-caffeine-spring-boot-autoconfigure</module>
+        <module>mingsha-redis-spring-boot-autoconfigure</module>
+        <module>mingsha-rabbitmq-spring-boot-autoconfigure</module>
+        <module>mingsha-elasticsearch-spring-boot-autoconfigure</module>
+        <module>mingsha-mail-spring-boot-autoconfigure</module>
+        <module>mingsha-websocket-spring-boot-autoconfigure</module>
+        <module>mingsha-zookeeper-spring-boot-autoconfigure</module>
+        <module>mingsha-shardingsphere-spring-boot-autoconfigure</module>
+        <module>mingsha-ldap-spring-boot-autoconfigure</module>
+        <module>mingsha-aop-spring-boot-autoconfigure</module>
+        <module>mingsha-mongodb-spring-boot-autoconfigure</module>
+        <module>mingsha-solr-spring-boot-autoconfigure</module>
+        <module>mingsha-kafka-spring-boot-autoconfigure</module>
+        <module>mingsha-postgresql-spring-boot-autoconfigure</module>
+        <module>mingsha-druid-spring-boot-autoconfigure</module>
+        <module>mingsha-mysql-spring-boot-autoconfigure</module>
     </modules>
 
 </project>

@@ -1,0 +1,7 @@
+mybatis:
+  type-aliases-package: site.mingsha.boot.example.mybatis.entity
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-prefix: executableSql.

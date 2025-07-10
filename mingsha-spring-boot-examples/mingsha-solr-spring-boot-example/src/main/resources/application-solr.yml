@@ -1,0 +1,13 @@
+mingsha:
+  solr:
+    enabled: true
+    url: http://localhost:8983/solr
+    default-collection: collection1
+    connect-timeout: 10000
+    read-timeout: 30000
+    max-connections: 100
+    max-connections-per-host: 20 
+
+solr:
+  host: http://localhost:8983/solr
+  core: documents 

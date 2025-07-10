@@ -1,0 +1,8 @@
+# ZooKeeper 配置
+spring:
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      base-sleep-time-ms: 1000
+      max-sleep-ms: 3000
+      max-retries: 3 

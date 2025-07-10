@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    include:
+      - logging
+      - actuator
+      - rabbitmq
+      - server
+  application:
+    name: mingsha-rabbitmq-spring-boot-example 

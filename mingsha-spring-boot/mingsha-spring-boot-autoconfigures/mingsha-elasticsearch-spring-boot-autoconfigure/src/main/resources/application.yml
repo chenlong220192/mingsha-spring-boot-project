@@ -1,0 +1,9 @@
+# Elasticsearch 默认配置
+spring:
+  elasticsearch:
+    host: localhost
+    port: 9200
+    connect-timeout: 5000
+    read-timeout: 60000
+    ssl: false
+    index-prefix: "" 

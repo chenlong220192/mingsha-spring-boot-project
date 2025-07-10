@@ -1,0 +1,10 @@
+# WebSocket 默认配置
+spring:
+  websocket:
+    endpoint: /ws
+    allowed-origins: ["*"]
+    heartbeat-interval: 25000
+    max-message-size: 8192
+    max-sessions: 1000
+    sockjs-enabled: true
+    stomp-enabled: false 

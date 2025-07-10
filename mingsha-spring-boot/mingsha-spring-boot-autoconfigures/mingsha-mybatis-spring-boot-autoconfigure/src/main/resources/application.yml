@@ -1,0 +1,16 @@
+# MyBatis 配置
+mybatis:
+  # Mapper 文件位置
+  mapper-locations: classpath:mapper/*.xml
+  # 类型别名包
+  type-aliases-package: site.mingsha.boot.example.mybatis.entity
+  # 配置项
+  configuration:
+    # 开启驼峰命名转换
+    map-underscore-to-camel-case: true
+    # 开启二级缓存
+    cache-enabled: true
+    # 延迟加载
+    lazy-loading-enabled: true
+    # 积极延迟加载
+    aggressive-lazy-loading: false 

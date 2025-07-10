@@ -17,6 +17,13 @@
 *.tag           text
 *.tagx          text
 *.xml           text
+*.md            text
+*.yml           text
+*.yaml          text
+*.sh            text eol=lf
+*.bat           text eol=crlf
+*.json          text
+*.sql           text
 
 # These files are binary and should be left untouched
 # (binary is a macro for -text -diff)

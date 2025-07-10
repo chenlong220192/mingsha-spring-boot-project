@@ -1,0 +1,36 @@
+# Actuator 配置
+management:
+  # 端点配置
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # 端点详情配置
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+    metrics:
+      enabled: true
+    env:
+      enabled: true
+    configprops:
+      enabled: true
+    beans:
+      enabled: true
+    mappings:
+      enabled: true
+    threaddump:
+      enabled: true
+    heapdump:
+      enabled: true
+    prometheus:
+      enabled: true
+  # 指标配置
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name} 

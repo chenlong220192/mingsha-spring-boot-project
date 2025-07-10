@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    include:
+      - logging
+      - actuator
+      - ldap
+      - server
+  application:
+    name: mingsha-ldap-spring-boot-example 

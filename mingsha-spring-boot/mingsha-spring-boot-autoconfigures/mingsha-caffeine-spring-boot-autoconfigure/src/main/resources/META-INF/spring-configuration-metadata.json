@@ -1,0 +1,41 @@
+{
+  "groups": [
+    {
+      "name": "spring.cache.caffeine",
+      "type": "site.mingsha.boot.starter.caffeine.autoconfigure.MingshaCaffeineProperties",
+      "sourceType": "site.mingsha.boot.starter.caffeine.autoconfigure.MingshaCaffeineProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.cache.caffeine.max-size",
+      "type": "java.lang.Long",
+      "description": "最大缓存条目数",
+      "defaultValue": 1000
+    },
+    {
+      "name": "spring.cache.caffeine.expire-after-write",
+      "type": "java.lang.Long",
+      "description": "写入后过期时间（秒）",
+      "defaultValue": 600
+    },
+    {
+      "name": "spring.cache.caffeine.expire-after-access",
+      "type": "java.lang.Long",
+      "description": "访问后过期时间（秒）",
+      "defaultValue": 300
+    },
+    {
+      "name": "spring.cache.caffeine.refresh-after-write",
+      "type": "java.lang.Long",
+      "description": "写入后刷新时间（秒）",
+      "defaultValue": 300
+    },
+    {
+      "name": "spring.cache.caffeine.record-stats",
+      "type": "java.lang.Boolean",
+      "description": "是否记录统计信息",
+      "defaultValue": true
+    }
+  ]
+} 

@@ -1,0 +1,7 @@
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: /data/logs/${spring.application.name}
+  level:
+    root: INFO
+    org.springframework: WARN

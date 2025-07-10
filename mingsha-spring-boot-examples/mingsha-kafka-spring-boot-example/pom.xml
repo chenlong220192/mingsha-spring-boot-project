@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>site.mingsha.boot</groupId>
+        <artifactId>mingsha-spring-boot-examples</artifactId>
+        <version>${revision}</version>
+    </parent>
+    
+    <artifactId>mingsha-kafka-spring-boot-example</artifactId>
+    <packaging>jar</packaging>
+    
+    <name>mingsha-kafka-spring-boot-example</name>
+    <description>Kafka Spring Boot Example</description>
+    
+    <dependencies>
+                
+        <!-- Logging Starter -->
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-logging-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        
+        <!-- Actuator Starter -->
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-actuator-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Tomcat Starter -->
+        <dependency>
+			<groupId>site.mingsha.boot</groupId>
+			<artifactId>mingsha-tomcat-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+		</dependency>
+
+        <!-- Web Starter -->
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-web-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Kafka Starter -->
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-kafka-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        
+        <!-- Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        
+        <!-- Spring Boot Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Spring Kafka Test -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project> 

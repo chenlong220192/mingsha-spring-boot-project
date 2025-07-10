@@ -1,0 +1,6 @@
+mingsha:
+  aop:
+    enabled: true
+    proxy-target-class: true
+    expose-proxy: false
+    order: 0 

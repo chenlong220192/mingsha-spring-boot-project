@@ -1,0 +1,64 @@
+spring:
+  kafka:
+    enabled: true
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: mingsha-kafka-example-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      session-timeout: 30000
+      max-poll-records: 500
+      fetch-min-size: 1
+      fetch-max-wait: 500
+      max-poll-interval-ms: 300000
+      heartbeat-interval-ms: 3000
+      request-timeout-ms: 30000
+      default-api-timeout-ms: 60000
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1
+      retries: 3
+      batch-size: 16384
+      linger-ms: 1
+      buffer-memory: 33554432
+      compression-type: snappy
+      max-request-size: 1048576
+      request-timeout-ms: 30000
+      delivery-timeout-ms: 120000
+      enable-idempotence: false
+      transactional-id: null
+    admin:
+      auto-create: true
+      properties:
+        request.timeout.ms: 5000
+        default.api.timeout.ms: 10000
+    listener:
+      missing-topics-fatal: false
+      ack-mode: MANUAL_IMMEDIATE
+      concurrency: 3
+      poll-timeout: 3000
+      type: SINGLE
+      idle-event-interval: 10000
+      no-poll-threshold: 0.5
+      idle-between-polls: 0
+      monitor-interval: 30
+      log-container-config: true
+      missing-topics-fatal: false
+      ack-on-error: false
+      ack-discarded: false
+      sub-batch-per-partition: false
+      consumer-start-timeout: 30000
+      idle-between-polls: 0
+      no-poll-threshold: 0.5
+      idle-event-interval: 10000
+      monitor-interval: 30
+      log-container-config: true
+      missing-topics-fatal: false
+      ack-on-error: false
+      ack-discarded: false
+      sub-batch-per-partition: false
+      consumer-start-timeout: 30000 

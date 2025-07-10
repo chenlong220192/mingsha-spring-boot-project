@@ -1,0 +1,9 @@
+mingsha:
+  mongodb:
+    enabled: true
+    uri: mongodb://localhost:27017
+    database: test
+    connect-timeout: 10000
+    read-timeout: 30000
+    max-connections: 100
+    min-connections: 5 

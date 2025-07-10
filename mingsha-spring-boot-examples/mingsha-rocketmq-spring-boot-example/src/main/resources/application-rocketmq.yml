@@ -1,21 +1,24 @@
+# RocketMQ 配置
 rocketmq:
+  # 是否启用 RocketMQ
+  enabled: true
+  # NameServer 地址
   name-server: 127.0.0.1:9876
-  producer:
-    # 发送同一类消息的设置为同一个group，保证唯一
-    group: producer_group
-    # 发送消息超时时间，默认3000
-    sendMessageTimeout: 10000
-    # 发送消息失败重试次数，默认2
-    retryTimesWhenSendFailed: 2
-    # 异步消息重试此处，默认2
-    retryTimesWhenSendAsyncFailed: 2
-    # 消息最大长度，默认1024 * 1024 * 4(默认4M)
-    maxMessageSize: 4096
-    # 压缩消息阈值，默认4k(1024 * 4)
-    compressMessageBodyThreshold: 4096
-    # 是否在内部发送失败时重试另一个broker，默认false
-    retryNextServer: true
-  consumer:
-    # group: consumer_group
-    # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
-    pull-batch-size: 10
+  # 生产者组名
+  producer-group: mingsha-example-producer-group
+  # 消费者组名
+  consumer-group: mingsha-example-consumer-group
+  # 消息发送超时时间（毫秒）
+  send-message-timeout: 3000
+  # 消息压缩阈值（字节）
+  compress-message-body-threshold: 4096
+  # 最大消息大小（字节）
+  max-message-size: 4194304
+  # 重试次数
+  retry-times-when-send-failed: 2
+  # 异步发送重试次数
+  retry-times-when-send-async-failed: 2
+  # 是否启用消息轨迹
+  enable-msg-trace: false
+  # 消息轨迹主题
+  customized-trace-topic: RMQ_SYS_TRACE_TOPIC 

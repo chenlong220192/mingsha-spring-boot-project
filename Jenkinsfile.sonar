@@ -1,0 +1,70 @@
+pipeline {
+    agent { label 'linux' }
+
+    tools {
+        jdk 'jdk17'
+    }
+
+    environment {
+        MAVEN_OPTS = '-Dmaven.test.failure.ignore=false'
+        REPO_DIR = "${env.WORKSPACE}"
+        SONAR_TOKEN = credentials('sonar-token')
+        SONAR_PROJECT_KEY = 'mingsha-spring-boot-project'
+        SONAR_PROJECT_NAME = 'mingsha-spring-boot-project'
+        SONAR_HOST_URL = 'http://your-sonarqube-server:9000'
+        EMAIL_RECIPIENTS = 'dev-team@example.com'
+        EMAIL_SUBJECT = '[SonarQube扫描通知] mingsha-spring-boot-project #${BUILD_NUMBER} - ${BUILD_STATUS}'
+        EMAIL_BODY = '''
+            <h3>SonarQube 扫描通知</h3>
+            <ul>
+                <li>项目: mingsha-spring-boot-project</li>
+                <li>构建编号: ${BUILD_NUMBER}</li>
+                <li>状态: ${BUILD_STATUS}</li>
+                <li>分支: ${GIT_BRANCH}</li>
+                <li>提交: ${GIT_COMMIT}</li>
+                <li>详情: <a href="${BUILD_URL}">${BUILD_URL}</a></li>
+            </ul>
+        '''
+    }
+
+    stages {
+        stage('SonarQube Scan') {
+            steps {
+                echo "Repository directory: ${env.REPO_DIR}"
+
+                sh '''
+                    cd $REPO_DIR && ./mvnw sonar:sonar \
+                    -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+                    -Dsonar.projectName=$SONAR_PROJECT_NAME \
+                    -Dsonar.host.url=$SONAR_HOST_URL \
+                    -Dsonar.login=$SONAR_TOKEN
+                '''
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            script {
+                emailext(
+                    to: env.EMAIL_RECIPIENTS,
+                    subject: env.EMAIL_SUBJECT.replace('${BUILD_STATUS}', '成功'),
+                    body: env.EMAIL_BODY.replace('${BUILD_STATUS}', '成功'),
+                    mimeType: 'text/html'
+                )
+            }
+        }
+        failure {
+            script {
+                emailext(
+                    to: env.EMAIL_RECIPIENTS,
+                    subject: env.EMAIL_SUBJECT.replace('${BUILD_STATUS}', '失败'),
+                    body: env.EMAIL_BODY.replace('${BUILD_STATUS}', '失败'),
+                    mimeType: 'text/html'
+                )
+            }
+        }
+    }
+} 

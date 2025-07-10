@@ -18,34 +18,30 @@
     <packaging>pom</packaging>
 
     <modules>
-      <module>mingsha-spring-boot-starter</module>
-      <module>mingsha-logging-spring-boot-starter</module>
-      <module>mingsha-mybatis-spring-boot-starter</module>
-      <module>mingsha-rocketmq-spring-boot-starter</module>
-
-        <!--
+        <module>mingsha-spring-boot-starter</module>
+        <module>mingsha-logging-spring-boot-starter</module>
+        <module>mingsha-mybatis-spring-boot-starter</module>
+        <module>mingsha-rocketmq-spring-boot-starter</module>
+        <module>mingsha-shardingsphere-spring-boot-starter</module>
         <module>mingsha-test-spring-boot-starter</module>
         <module>mingsha-actuator-spring-boot-starter</module>
-        <module>mingsha-security-spring-boot-starter</module>
-        <module>mingsha-scheduled-spring-boot-starter</module>
         <module>mingsha-rabbitmq-spring-boot-starter</module>
-        <module>mingsha-redis-spring-boot-starter</module> -->
-
-        <!-- <module>mingsha-caffeine-spring-boot-starter</module>
-
+        <module>mingsha-redis-spring-boot-starter</module>
+        <module>mingsha-caffeine-spring-boot-starter</module>
         <module>mingsha-tomcat-spring-boot-starter</module>
-        <module>mingsha-aop-spring-boot-starter</module>
         <module>mingsha-mail-spring-boot-starter</module>
-        <module>mingsha-ldap-spring-boot-starter</module> -->
-
-<!--        <module>mingsha-elasticsearch-spring-boot-starter</module>-->
-<!--        <module>mingsha-zookeeper-spring-boot-starter</module>-->
-<!--        <module>mingsha-websocket-spring-boot-starter</module>-->
-<!--        <module>mingsha-license-spring-boot-starter</module>-->
-<!--        <module>mingsha-retry-spring-boot-starter</module>-->
-<!--        <module>mingsha-solr-spring-boot-starter</module>-->
-<!--        <module>mingsha-mongodb-spring-boot-starter</module>-->
-<!--        <module>mingsha-quartz-spring-boot-starter</module>-->
+        <module>mingsha-elasticsearch-spring-boot-starter</module>
+        <module>mingsha-zookeeper-spring-boot-starter</module>
+        <module>mingsha-websocket-spring-boot-starter</module>
+        <module>mingsha-web-spring-boot-starter</module>
+        <module>mingsha-ldap-spring-boot-starter</module>
+        <module>mingsha-aop-spring-boot-starter</module>
+        <module>mingsha-mongodb-spring-boot-starter</module>
+        <module>mingsha-solr-spring-boot-starter</module>
+        <module>mingsha-kafka-spring-boot-starter</module>
+        <module>mingsha-postgresql-spring-boot-starter</module>
+        <module>mingsha-druid-spring-boot-starter</module>
+        <module>mingsha-mysql-spring-boot-starter</module>
     </modules>
 
 </project>

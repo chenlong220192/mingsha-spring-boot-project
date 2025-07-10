@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>site.mingsha.boot</groupId>
+        <artifactId>mingsha-spring-boot-examples</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>mingsha-elasticsearch-spring-boot-example</artifactId>
+
+    <name>${project.artifactId}</name>
+    <description>${project.artifactId}-${project.version}</description>
+
+    <packaging>jar</packaging>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-logging-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-actuator-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-tomcat-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-web-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>site.mingsha.boot</groupId>
+            <artifactId>mingsha-elasticsearch-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project> 

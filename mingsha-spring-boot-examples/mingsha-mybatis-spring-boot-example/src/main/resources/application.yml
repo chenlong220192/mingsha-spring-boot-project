@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: mingsha-mybatis-spring-boot-example
-  profiles:
-    include:
-      - loggging
-      - datasource

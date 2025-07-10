@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    include:
+      - logging
+      - actuator
+      - redis
+      - server
+  application:
+    name: mingsha-redis-spring-boot-example 

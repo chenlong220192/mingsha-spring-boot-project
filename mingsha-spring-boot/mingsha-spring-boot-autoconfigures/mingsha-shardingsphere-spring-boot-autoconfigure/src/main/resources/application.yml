@@ -1,0 +1,22 @@
+# ShardingSphere 默认配置
+spring:
+  shardingsphere:
+    enabled: true
+    mode:
+      type: Memory
+    datasource:
+      names: ds0,ds1
+    rules:
+      sharding:
+        tables:
+          t_order:
+            actual-data-nodes: ds${0..1}.t_order_${0..1}
+            table-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: t_order_inline
+        sharding-algorithms:
+          t_order_inline:
+            type: INLINE
+            props:
+              algorithm-expression: t_order_${order_id % 2} 

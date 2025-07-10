@@ -1,0 +1,11 @@
+# Zookeeper 默认配置
+spring:
+  zookeeper:
+    connect-string: localhost:2181
+    session-timeout-ms: 60000
+    connection-timeout-ms: 15000
+    retry-policy: exponential
+    retry-count: 3
+    retry-interval-ms: 1000
+    max-retry-interval-ms: 30000
+    namespace: "" 

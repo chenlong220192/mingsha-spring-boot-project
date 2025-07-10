@@ -1,11 +1,9 @@
-#! /bin/shell
+#! /bin/bash
 
 #======================================================================
-# mvn package script
-# default local profile
 #
-# author: chenlong
-# date: 2020-06-03
+# author: mingsha
+# date: 2025-07-10
 #======================================================================
 
 # bin目录绝对路径
@@ -19,10 +17,32 @@ BASE_PATH=`pwd`
 
 NEW_VERSION=$1
 
-echo "set project to new version: ${NEW_VERSION}"
+if [ -z "$NEW_VERSION" ]; then
+    echo "Error: Please provide a version number"
+    echo "Usage: $0 <version>"
+    echo "Example: $0 1.0.0"
+    exit 1
+fi
 
+echo "Setting project to new version: ${NEW_VERSION}"
+
+# 更新根目录 pom.xml 中的 revision
+echo "Updating root pom.xml..."
 cat ${BASE_PATH}/pom.xml\
     | sed "s/<revision>[^<]*<\/revision>/<revision>${NEW_VERSION}<\/revision>/1" > ${BASE_PATH}/pom.xml.newVersion\
     && mv ${BASE_PATH}/pom.xml.newVersion ${BASE_PATH}/pom.xml
 
-echo "set project to new version Done. NEW_VERSION: ${NEW_VERSION}"
+# 更新父模块 pom.xml 中的 revision
+echo "Updating parent pom.xml..."
+PARENT_POM_PATH="${BASE_PATH}/mingsha-spring-boot/mingsha-spring-boot-parent/pom.xml"
+if [ -f "$PARENT_POM_PATH" ]; then
+    cat ${PARENT_POM_PATH}\
+        | sed "s/<revision>[^<]*<\/revision>/<revision>${NEW_VERSION}<\/revision>/1" > ${PARENT_POM_PATH}.newVersion\
+        && mv ${PARENT_POM_PATH}.newVersion ${PARENT_POM_PATH}
+    echo "Parent pom.xml updated successfully"
+else
+    echo "Warning: Parent pom.xml not found at ${PARENT_POM_PATH}"
+fi
+
+echo "Version update completed. NEW_VERSION: ${NEW_VERSION}"
+echo "Please run 'mvn clean install' to rebuild the project with the new version"

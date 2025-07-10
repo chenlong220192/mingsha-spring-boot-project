@@ -1,0 +1,57 @@
+{
+  "groups": [
+    {
+      "name": "spring.elasticsearch",
+      "type": "site.mingsha.boot.starter.elasticsearch.autoconfigure.MingshaElasticsearchProperties",
+      "sourceType": "site.mingsha.boot.starter.elasticsearch.autoconfigure.MingshaElasticsearchProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.elasticsearch.host",
+      "type": "java.lang.String",
+      "description": "Elasticsearch服务器地址",
+      "defaultValue": "localhost"
+    },
+    {
+      "name": "spring.elasticsearch.port",
+      "type": "java.lang.Integer",
+      "description": "Elasticsearch服务器端口",
+      "defaultValue": 9200
+    },
+    {
+      "name": "spring.elasticsearch.connect-timeout",
+      "type": "java.lang.Integer",
+      "description": "连接超时时间（毫秒）",
+      "defaultValue": 5000
+    },
+    {
+      "name": "spring.elasticsearch.read-timeout",
+      "type": "java.lang.Integer",
+      "description": "读取超时时间（毫秒）",
+      "defaultValue": 60000
+    },
+    {
+      "name": "spring.elasticsearch.username",
+      "type": "java.lang.String",
+      "description": "用户名"
+    },
+    {
+      "name": "spring.elasticsearch.password",
+      "type": "java.lang.String",
+      "description": "密码"
+    },
+    {
+      "name": "spring.elasticsearch.ssl",
+      "type": "java.lang.Boolean",
+      "description": "是否启用SSL",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.elasticsearch.index-prefix",
+      "type": "java.lang.String",
+      "description": "索引名称前缀",
+      "defaultValue": ""
+    }
+  ]
+} 

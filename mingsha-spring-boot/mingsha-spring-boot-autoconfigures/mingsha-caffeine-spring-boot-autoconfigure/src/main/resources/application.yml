@@ -1,0 +1,9 @@
+# Caffeine 缓存默认配置
+spring:
+  cache:
+    caffeine:
+      max-size: 1000
+      expire-after-write: 600
+      expire-after-access: 300
+      refresh-after-write: 300
+      record-stats: true 

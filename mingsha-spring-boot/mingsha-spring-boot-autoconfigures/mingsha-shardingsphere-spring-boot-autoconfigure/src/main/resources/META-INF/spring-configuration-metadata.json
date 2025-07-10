@@ -1,0 +1,53 @@
+{
+  "groups": [
+    {
+      "name": "spring.shardingsphere",
+      "type": "site.mingsha.boot.starter.shardingsphere.autoconfigure.MingshaShardingSphereProperties",
+      "sourceType": "site.mingsha.boot.starter.shardingsphere.autoconfigure.MingshaShardingSphereProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.shardingsphere.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用ShardingSphere",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.shardingsphere.mode-type",
+      "type": "java.lang.String",
+      "description": "模式类型",
+      "defaultValue": "Memory"
+    },
+    {
+      "name": "spring.shardingsphere.data-source-names",
+      "type": "java.lang.String[]",
+      "description": "数据源名称"
+    },
+    {
+      "name": "spring.shardingsphere.sharding-rule-config",
+      "type": "java.lang.String",
+      "description": "分片规则配置"
+    },
+    {
+      "name": "spring.shardingsphere.read-write-splitting-rule-config",
+      "type": "java.lang.String",
+      "description": "读写分离配置"
+    },
+    {
+      "name": "spring.shardingsphere.data-mask-rule-config",
+      "type": "java.lang.String",
+      "description": "数据脱敏配置"
+    },
+    {
+      "name": "spring.shardingsphere.encrypt-rule-config",
+      "type": "java.lang.String",
+      "description": "加密配置"
+    },
+    {
+      "name": "spring.shardingsphere.shadow-rule-config",
+      "type": "java.lang.String",
+      "description": "影子库配置"
+    }
+  ]
+} 

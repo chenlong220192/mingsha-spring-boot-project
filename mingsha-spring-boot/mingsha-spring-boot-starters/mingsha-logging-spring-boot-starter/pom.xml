@@ -19,14 +19,10 @@
 
 	<dependencies>
 
-		<!-- mingsha tools -->
+		<!-- mingsha logging autoconfigure -->
 		<dependency>
-			<groupId>site.mingsha.kernel</groupId>
-			<artifactId>mingsha-kernel-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>site.mingsha.kernel</groupId>
-			<artifactId>mingsha-kernel-logger</artifactId>
+			<groupId>site.mingsha.boot</groupId>
+			<artifactId>mingsha-logging-spring-boot-autoconfigure</artifactId>
 		</dependency>
 
 	</dependencies>

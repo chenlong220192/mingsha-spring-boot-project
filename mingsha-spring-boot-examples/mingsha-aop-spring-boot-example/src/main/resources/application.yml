@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    include:
+      - logging
+      - actuator
+      - aop
+      - server
+  application:
+    name: mingsha-aop-spring-boot-example 

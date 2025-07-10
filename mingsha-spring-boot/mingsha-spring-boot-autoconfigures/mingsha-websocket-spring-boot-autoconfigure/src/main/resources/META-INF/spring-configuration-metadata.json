@@ -1,0 +1,53 @@
+{
+  "groups": [
+    {
+      "name": "spring.websocket",
+      "type": "site.mingsha.boot.starter.websocket.autoconfigure.MingshaWebSocketProperties",
+      "sourceType": "site.mingsha.boot.starter.websocket.autoconfigure.MingshaWebSocketProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.websocket.endpoint",
+      "type": "java.lang.String",
+      "description": "WebSocket端点路径",
+      "defaultValue": "/ws"
+    },
+    {
+      "name": "spring.websocket.allowed-origins",
+      "type": "java.lang.String[]",
+      "description": "允许的源",
+      "defaultValue": ["*"]
+    },
+    {
+      "name": "spring.websocket.heartbeat-interval",
+      "type": "java.lang.Long",
+      "description": "心跳间隔（毫秒）",
+      "defaultValue": 25000
+    },
+    {
+      "name": "spring.websocket.max-message-size",
+      "type": "java.lang.Integer",
+      "description": "最大消息大小（字节）",
+      "defaultValue": 8192
+    },
+    {
+      "name": "spring.websocket.max-sessions",
+      "type": "java.lang.Integer",
+      "description": "最大会话数",
+      "defaultValue": 1000
+    },
+    {
+      "name": "spring.websocket.sockjs-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用SockJS",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.websocket.stomp-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用STOMP",
+      "defaultValue": false
+    }
+  ]
+} 
