@@ -1,55 +1,76 @@
 # Mingsha Spring Boot Project
 
-## 文档导航 / 模块总览
+## 模块总览
 
-| 模块类型         | 模块名（英文） | 中文说明           | 路径 |
+| 模块类型         | 模块名 | 说明           | 文档 |
 |------------------|----------------|--------------------|------|
-| **Starter**      | mingsha-mysql-spring-boot-starter         | MySQL 启动器         | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-mysql-spring-boot-starter/ |
-|                  | mingsha-druid-spring-boot-starter         | Druid 连接池启动器   | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-druid-spring-boot-starter/ |
-|                  | mingsha-postgresql-spring-boot-starter    | PostgreSQL 启动器    | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-postgresql-spring-boot-starter/ |
-|                  | mingsha-kafka-spring-boot-starter         | Kafka 启动器         | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-kafka-spring-boot-starter/ |
-|                  | mingsha-solr-spring-boot-starter          | Solr 启动器          | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-solr-spring-boot-starter/ |
-|                  | mingsha-mongodb-spring-boot-starter       | MongoDB 启动器       | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-mongodb-spring-boot-starter/ |
-|                  | mingsha-aop-spring-boot-starter           | AOP 启动器           | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-aop-spring-boot-starter/ |
-|                  | mingsha-ldap-spring-boot-starter          | LDAP 启动器          | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-ldap-spring-boot-starter/ |
-|                  | mingsha-web-spring-boot-starter           | Web 基础能力         | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-web-spring-boot-starter/ |
-|                  | mingsha-websocket-spring-boot-starter     | WebSocket 启动器     | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-websocket-spring-boot-starter/ |
-|                  | mingsha-zookeeper-spring-boot-starter     | Zookeeper 启动器     | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-zookeeper-spring-boot-starter/ |
-|                  | mingsha-elasticsearch-spring-boot-starter | Elasticsearch 启动器 | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-elasticsearch-spring-boot-starter/ |
-|                  | mingsha-mail-spring-boot-starter          | 邮件发送             | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-mail-spring-boot-starter/ |
-|                  | mingsha-tomcat-spring-boot-starter        | Tomcat 内嵌容器      | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-tomcat-spring-boot-starter/ |
-|                  | mingsha-caffeine-spring-boot-starter      | Caffeine 本地缓存    | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-caffeine-spring-boot-starter/ |
-|                  | mingsha-redis-spring-boot-starter         | Redis 启动器         | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-redis-spring-boot-starter/ |
-|                  | mingsha-rabbitmq-spring-boot-starter      | RabbitMQ 启动器      | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-rabbitmq-spring-boot-starter/ |
-|                  | mingsha-actuator-spring-boot-starter      | 监控与健康检查       | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-actuator-spring-boot-starter/ |
-|                  | mingsha-test-spring-boot-starter          | 测试工具             | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-test-spring-boot-starter/ |
-|                  | mingsha-shardingsphere-spring-boot-starter| 分库分表             | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-shardingsphere-spring-boot-starter/ |
-|                  | mingsha-rocketmq-spring-boot-starter      | RocketMQ 启动器      | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-rocketmq-spring-boot-starter/ |
-|                  | mingsha-mybatis-spring-boot-starter       | MyBatis 启动器       | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-mybatis-spring-boot-starter/ |
-|                  | mingsha-logging-spring-boot-starter       | 日志增强             | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-logging-spring-boot-starter/ |
-|                  | mingsha-spring-boot-starter               | 基础 starter         | mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-spring-boot-starter/ |
-| **Autoconfigure**| ...（与 starter 一一对应，路径类似）      | 自动配置模块         | mingsha-spring-boot/mingsha-spring-boot-autoconfigures/xxx-autoconfigure/ |
-| **Examples**     | mingsha-mybatis-h2-spring-boot-example    | MyBatis + H2 示例    | mingsha-spring-boot-examples/mingsha-mybatis-h2-spring-boot-example/ |
-|                  | mingsha-mybatis-mysql-spring-boot-example | MyBatis + MySQL 示例 | mingsha-spring-boot-examples/mingsha-mybatis-mysql-spring-boot-example/ |
-|                  | mingsha-mybatis-postgresql-spring-boot-example | MyBatis + PostgreSQL 示例 | mingsha-spring-boot-examples/mingsha-mybatis-postgresql-spring-boot-example/ |
-|                  | mingsha-kafka-spring-boot-example         | Kafka 示例           | mingsha-spring-boot-examples/mingsha-kafka-spring-boot-example/ |
-|                  | mingsha-solr-spring-boot-example          | Solr 示例            | mingsha-spring-boot-examples/mingsha-solr-spring-boot-example/ |
-|                  | mingsha-mongodb-spring-boot-example       | MongoDB 示例         | mingsha-spring-boot-examples/mingsha-mongodb-spring-boot-example/ |
-|                  | mingsha-aop-spring-boot-example           | AOP 示例             | mingsha-spring-boot-examples/mingsha-aop-spring-boot-example/ |
-|                  | mingsha-ldap-spring-boot-example          | LDAP 示例            | mingsha-spring-boot-examples/mingsha-ldap-spring-boot-example/ |
-|                  | mingsha-zookeeper-spring-boot-example     | Zookeeper 示例       | mingsha-spring-boot-examples/mingsha-zookeeper-spring-boot-example/ |
-|                  | mingsha-websocket-spring-boot-example     | WebSocket 示例       | mingsha-spring-boot-examples/mingsha-websocket-spring-boot-example/ |
-|                  | mingsha-tomcat-spring-boot-example        | Tomcat 示例          | mingsha-spring-boot-examples/mingsha-tomcat-spring-boot-example/ |
-|                  | mingsha-shardingsphere-spring-boot-example| 分库分表示例         | mingsha-spring-boot-examples/mingsha-shardingsphere-spring-boot-example/ |
-|                  | mingsha-rocketmq-spring-boot-example      | RocketMQ 示例        | mingsha-spring-boot-examples/mingsha-rocketmq-spring-boot-example/ |
-|                  | mingsha-redis-spring-boot-example         | Redis 示例           | mingsha-spring-boot-examples/mingsha-redis-spring-boot-example/ |
-|                  | mingsha-rabbitmq-spring-boot-example      | RabbitMQ 示例        | mingsha-spring-boot-examples/mingsha-rabbitmq-spring-boot-example/ |
-|                  | mingsha-mail-spring-boot-example          | 邮件发送示例         | mingsha-spring-boot-examples/mingsha-mail-spring-boot-example/ |
-|                  | mingsha-logging-spring-boot-example       | 日志增强示例         | mingsha-spring-boot-examples/mingsha-logging-spring-boot-example/ |
-|                  | mingsha-elasticsearch-spring-boot-example | Elasticsearch 示例   | mingsha-spring-boot-examples/mingsha-elasticsearch-spring-boot-example/ |
-|                  | mingsha-caffeine-spring-boot-example      | Caffeine 示例        | mingsha-spring-boot-examples/mingsha-caffeine-spring-boot-example/ |
-|                  | mingsha-actuator-spring-boot-example      | 监控与健康检查示例   | mingsha-spring-boot-examples/mingsha-actuator-spring-boot-example/ |
-|                  | mingsha-druid-spring-boot-example         | Druid 示例           | mingsha-spring-boot-examples/mingsha-druid-spring-boot-example/ |
+| **Starter**      | mingsha-mysql-spring-boot-starter         | MySQL 启动器         | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-mysql-spring-boot-starter/README.md) |
+|                  | mingsha-druid-spring-boot-starter         | Druid 连接池启动器   | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-druid-spring-boot-starter/README.md) |
+|                  | mingsha-postgresql-spring-boot-starter    | PostgreSQL 启动器    | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-postgresql-spring-boot-starter/README.md) |
+|                  | mingsha-kafka-spring-boot-starter         | Kafka 启动器         | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-kafka-spring-boot-starter/README.md) |
+|                  | mingsha-solr-spring-boot-starter          | Solr 启动器          | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-solr-spring-boot-starter/README.md) |
+|                  | mingsha-mongodb-spring-boot-starter       | MongoDB 启动器       | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-mongodb-spring-boot-starter/README.md) |
+|                  | mingsha-aop-spring-boot-starter           | AOP 启动器           | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-aop-spring-boot-starter/README.md) |
+|                  | mingsha-ldap-spring-boot-starter          | LDAP 启动器          | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-ldap-spring-boot-starter/README.md) |
+|                  | mingsha-web-spring-boot-starter           | Web 基础能力         | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-web-spring-boot-starter/README.md) |
+|                  | mingsha-websocket-spring-boot-starter     | WebSocket 启动器     | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-websocket-spring-boot-starter/README.md) |
+|                  | mingsha-zookeeper-spring-boot-starter     | Zookeeper 启动器     | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-zookeeper-spring-boot-starter/README.md) |
+|                  | mingsha-elasticsearch-spring-boot-starter | Elasticsearch 启动器 | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-elasticsearch-spring-boot-starter/README.md) |
+|                  | mingsha-mail-spring-boot-starter          | 邮件发送             | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-mail-spring-boot-starter/README.md) |
+|                  | mingsha-tomcat-spring-boot-starter        | Tomcat 内嵌容器      | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-tomcat-spring-boot-starter/README.md) |
+|                  | mingsha-caffeine-spring-boot-starter      | Caffeine 本地缓存    | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-caffeine-spring-boot-starter/README.md) |
+|                  | mingsha-redis-spring-boot-starter         | Redis 启动器         | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-redis-spring-boot-starter/README.md) |
+|                  | mingsha-rabbitmq-spring-boot-starter      | RabbitMQ 启动器      | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-rabbitmq-spring-boot-starter/README.md) |
+|                  | mingsha-actuator-spring-boot-starter      | 监控与健康检查       | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-actuator-spring-boot-starter/README.md) |
+|                  | mingsha-test-spring-boot-starter          | 测试工具             | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-test-spring-boot-starter/README.md) |
+|                  | mingsha-shardingsphere-spring-boot-starter| 分库分表             | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-shardingsphere-spring-boot-starter/README.md) |
+|                  | mingsha-rocketmq-spring-boot-starter      | RocketMQ 启动器      | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-rocketmq-spring-boot-starter/README.md) |
+|                  | mingsha-mybatis-spring-boot-starter       | MyBatis 启动器       | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-mybatis-spring-boot-starter/README.md) |
+|                  | mingsha-logging-spring-boot-starter       | 日志增强             | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-logging-spring-boot-starter/README.md) |
+|                  | mingsha-spring-boot-starter               | 基础 starter         | [README.md](mingsha-spring-boot/mingsha-spring-boot-starters/mingsha-spring-boot-starter/README.md) |
+| **Autoconfigure**| mingsha-mysql-spring-boot-autoconfigure   | MySQL 自动配置       | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-mysql-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-druid-spring-boot-autoconfigure   | Druid 自动配置       | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-druid-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-postgresql-spring-boot-autoconfigure | PostgreSQL 自动配置 | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-postgresql-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-kafka-spring-boot-autoconfigure   | Kafka 自动配置       | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-kafka-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-solr-spring-boot-autoconfigure    | Solr 自动配置        | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-solr-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-mongodb-spring-boot-autoconfigure | MongoDB 自动配置     | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-mongodb-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-aop-spring-boot-autoconfigure     | AOP 自动配置         | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-aop-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-ldap-spring-boot-autoconfigure    | LDAP 自动配置        | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-ldap-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-websocket-spring-boot-autoconfigure | WebSocket 自动配置  | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-websocket-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-zookeeper-spring-boot-autoconfigure | Zookeeper 自动配置  | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-zookeeper-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-elasticsearch-spring-boot-autoconfigure | Elasticsearch 自动配置 | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-elasticsearch-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-mail-spring-boot-autoconfigure    | 邮件发送自动配置     | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-mail-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-tomcat-spring-boot-autoconfigure  | Tomcat 自动配置      | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-tomcat-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-caffeine-spring-boot-autoconfigure | Caffeine 自动配置   | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-caffeine-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-redis-spring-boot-autoconfigure   | Redis 自动配置       | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-redis-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-rabbitmq-spring-boot-autoconfigure | RabbitMQ 自动配置   | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-rabbitmq-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-actuator-spring-boot-autoconfigure | 监控与健康检查自动配置 | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-actuator-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-shardingsphere-spring-boot-autoconfigure | 分库分表自动配置   | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-shardingsphere-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-rocketmq-spring-boot-autoconfigure | RocketMQ 自动配置   | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-rocketmq-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-mybatis-spring-boot-autoconfigure | MyBatis 自动配置     | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-mybatis-spring-boot-autoconfigure/README.md) |
+|                  | mingsha-logging-spring-boot-autoconfigure | 日志增强自动配置     | [README.md](mingsha-spring-boot/mingsha-spring-boot-autoconfigures/mingsha-logging-spring-boot-autoconfigure/README.md) |
+| **Examples**     | mingsha-mybatis-h2-spring-boot-example    | MyBatis + H2 示例    | [README.md](mingsha-spring-boot-examples/mingsha-mybatis-h2-spring-boot-example/README.md) |
+|                  | mingsha-mybatis-mysql-spring-boot-example | MyBatis + MySQL 示例 | [README.md](mingsha-spring-boot-examples/mingsha-mybatis-mysql-spring-boot-example/README.md) |
+|                  | mingsha-mybatis-postgresql-spring-boot-example | MyBatis + PostgreSQL 示例 | [README.md](mingsha-spring-boot-examples/mingsha-mybatis-postgresql-spring-boot-example/README.md) |
+|                  | mingsha-kafka-spring-boot-example         | Kafka 示例           | [README.md](mingsha-spring-boot-examples/mingsha-kafka-spring-boot-example/README.md) |
+|                  | mingsha-solr-spring-boot-example          | Solr 示例            | [README.md](mingsha-spring-boot-examples/mingsha-solr-spring-boot-example/README.md) |
+|                  | mingsha-mongodb-spring-boot-example       | MongoDB 示例         | [README.md](mingsha-spring-boot-examples/mingsha-mongodb-spring-boot-example/README.md) |
+|                  | mingsha-aop-spring-boot-example           | AOP 示例             | [README.md](mingsha-spring-boot-examples/mingsha-aop-spring-boot-example/README.md) |
+|                  | mingsha-ldap-spring-boot-example          | LDAP 示例            | [README.md](mingsha-spring-boot-examples/mingsha-ldap-spring-boot-example/README.md) |
+|                  | mingsha-zookeeper-spring-boot-example     | Zookeeper 示例       | [README.md](mingsha-spring-boot-examples/mingsha-zookeeper-spring-boot-example/README.md) |
+|                  | mingsha-websocket-spring-boot-example     | WebSocket 示例       | [README.md](mingsha-spring-boot-examples/mingsha-websocket-spring-boot-example/README.md) |
+|                  | mingsha-tomcat-spring-boot-example        | Tomcat 示例          | [README.md](mingsha-spring-boot-examples/mingsha-tomcat-spring-boot-example/README.md) |
+|                  | mingsha-shardingsphere-spring-boot-example| 分库分表示例         | [README.md](mingsha-spring-boot-examples/mingsha-shardingsphere-spring-boot-example/README.md) |
+|                  | mingsha-rocketmq-spring-boot-example      | RocketMQ 示例        | [README.md](mingsha-spring-boot-examples/mingsha-rocketmq-spring-boot-example/README.md) |
+|                  | mingsha-redis-spring-boot-example         | Redis 示例           | [README.md](mingsha-spring-boot-examples/mingsha-redis-spring-boot-example/README.md) |
+|                  | mingsha-rabbitmq-spring-boot-example      | RabbitMQ 示例        | [README.md](mingsha-spring-boot-examples/mingsha-rabbitmq-spring-boot-example/README.md) |
+|                  | mingsha-mail-spring-boot-example          | 邮件发送示例         | [README.md](mingsha-spring-boot-examples/mingsha-mail-spring-boot-example/README.md) |
+|                  | mingsha-logging-spring-boot-example       | 日志增强示例         | [README.md](mingsha-spring-boot-examples/mingsha-logging-spring-boot-example/README.md) |
+|                  | mingsha-elasticsearch-spring-boot-example | Elasticsearch 示例   | [README.md](mingsha-spring-boot-examples/mingsha-elasticsearch-spring-boot-example/README.md) |
+|                  | mingsha-caffeine-spring-boot-example      | Caffeine 示例        | [README.md](mingsha-spring-boot-examples/mingsha-caffeine-spring-boot-example/README.md) |
+|                  | mingsha-actuator-spring-boot-example      | 监控与健康检查示例   | [README.md](mingsha-spring-boot-examples/mingsha-actuator-spring-boot-example/README.md) |
+|                  | mingsha-druid-spring-boot-example         | Druid 示例           | [README.md](mingsha-spring-boot-examples/mingsha-druid-spring-boot-example/README.md) |
+
 
 ---
 
@@ -63,17 +84,19 @@ Mingsha Spring Boot Project 致力于为企业级 Java 应用提供一站式、�
 
 ```
 mingsha-spring-boot-project/
-├── mingsha-spring-boot/                # 主源码聚合
-│   ├── mingsha-spring-boot-starters/   # 各类 starter 启动器
+├── mingsha-spring-boot/                    # 主源码聚合
+│   ├── mingsha-spring-boot-starters/       # 各类 starter 启动器
 │   ├── mingsha-spring-boot-autoconfigures/ # 各类自动配置
-│   ├── mingsha-spring-boot-parent/     # 统一 parent
-│   └── mingsha-spring-boot-dependencies/ # 依赖管理 BOM
-├── mingsha-spring-boot-examples/       # 各类场景示例
-├── bin/                                # 脚本工具
-├── config/                             # 代码规范等配置
-├── Makefile                            # 一键构建/测试/格式化
-├── pom.xml                             # Maven 聚合
-└── README.md                           # 项目说明
+│   ├── mingsha-spring-boot-parent/         # 统一 parent
+│   └── mingsha-spring-boot-dependencies/   # BOM 依赖管理
+├── mingsha-spring-boot-examples/           # 各类场景示例
+├── pom.xml                                 # Maven 对象模型
+├── bin/                                    # 脚本工具
+├── config/                                 # 代码规范等配置
+├── Makefile                                # 一键构建/测试/格式化
+├── Jenkinsfile                             # pipeline 4 Build
+├── Jenkinsfile.sonar                       # pipeline 4 SonarQube
+└── README.md                               # 项目说明
 ```
 
 ---
@@ -122,7 +145,7 @@ mingsha-spring-boot-project/
 
 ---
 
-## 简单使用介绍
+## 使用介绍
 
 以 MySQL Starter 为例，其他 Starter 用法类似：
 

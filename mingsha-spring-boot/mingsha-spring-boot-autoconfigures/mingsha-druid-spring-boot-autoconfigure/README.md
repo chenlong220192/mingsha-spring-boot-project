@@ -51,6 +51,3 @@ spring:
 - 无需自定义属性类，配置方式与Spring Boot官方一致
 - 推荐结合Spring Boot官方自动装配生态使用
 
-## 许可证
-
-MIT License 
