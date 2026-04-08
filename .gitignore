@@ -47,6 +47,12 @@ target
 
 # Maven ignore
 .flattened-pom.xml
+pom.xml.releaseBackup
+release.properties
+dependency-reduced-pom.xml
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
 
 # Node.js
 node_modules/
