@@ -28,7 +28,7 @@
 
     <properties>
         <!--  -->
-        <revision>1.0.0</revision>
+        <revision>1.0.1</revision>
         <flatten-maven-plugin.version>1.7.0</flatten-maven-plugin.version>
         <!-- checkstyle -->
         <checkstyle-maven-plugin.version>3.6.0</checkstyle-maven-plugin.version>
