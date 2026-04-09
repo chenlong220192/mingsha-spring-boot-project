@@ -6,6 +6,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.SolrInputDocument;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,17 +52,17 @@ class DocumentServiceTest {
     @Test
     void testCreateDocument() throws Exception {
         // Given
-        when(solrClient.add(anyString(), any())).thenReturn(null);
+        when(solrClient.add(anyString(), any(SolrInputDocument.class))).thenReturn(null);
         when(solrClient.commit(anyString())).thenReturn(null);
-        
+
         // When
         Document result = documentService.createDocument(testDocument);
-        
+
         // Then
         assertNotNull(result);
         assertEquals(testDocument.getId(), result.getId());
         assertEquals(testDocument.getTitle(), result.getTitle());
-        verify(solrClient).add("documents", any());
+        verify(solrClient).add(eq("documents"), any(SolrInputDocument.class));
         verify(solrClient).commit("documents");
     }
     
@@ -135,16 +136,16 @@ class DocumentServiceTest {
     @Test
     void testUpdateDocument() throws Exception {
         // Given
-        when(solrClient.add(anyString(), any())).thenReturn(null);
+        when(solrClient.add(anyString(), any(SolrInputDocument.class))).thenReturn(null);
         when(solrClient.commit(anyString())).thenReturn(null);
-        
+
         // When
         Document result = documentService.updateDocument("test-1", testDocument);
-        
+
         // Then
         assertNotNull(result);
         assertEquals("test-1", result.getId());
-        verify(solrClient).add("documents", any());
+        verify(solrClient).add(eq("documents"), any(SolrInputDocument.class));
         verify(solrClient).commit("documents");
     }
     
@@ -190,8 +191,8 @@ class DocumentServiceTest {
     @Test
     void testCreateDocumentException() throws Exception {
         // Given
-        when(solrClient.add(anyString(), any())).thenThrow(new SolrServerException("Solr error"));
-        
+        when(solrClient.add(anyString(), any(SolrInputDocument.class))).thenThrow(new SolrServerException("Solr error"));
+
         // When & Then
         assertThrows(RuntimeException.class, () -> {
             documentService.createDocument(testDocument);

@@ -1,44 +1,60 @@
 package site.mingsha.boot.example.logging.controller;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.ResponseEntity;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@ExtendWith(MockitoExtension.class)
 public class LogControllerTest {
-    @Autowired
-    private MockMvc mockMvc;
 
     @Test
-    void testRecordLog() throws Exception {
-        mockMvc.perform(post("/api/logs/record")
-                .param("level", "info")
-                .param("message", "测试日志"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("日志记录成功: info - 测试日志"));
+    void testRecordLog() {
+        LogController controller = new LogController();
+
+        ResponseEntity<String> response = controller.recordLog("info", "测试日志");
+
+        assertEquals(200, response.getStatusCode().value());
+        assertTrue(response.getBody().contains("日志记录成功"));
+        assertTrue(response.getBody().contains("info"));
     }
 
     @Test
-    void testRecordException() throws Exception {
-        mockMvc.perform(post("/api/logs/exception")
-                .param("message", "测试异常"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("异常日志记录成功"));
+    void testRecordException() {
+        LogController controller = new LogController();
+
+        ResponseEntity<String> response = controller.recordException("测试异常");
+
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals("异常日志记录成功", response.getBody());
     }
 
     @Test
-    void testRecordStructuredLog() throws Exception {
-        mockMvc.perform(post("/api/logs/structured")
-                .param("userId", "123")
-                .param("action", "登录"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("结构化日志记录成功"));
+    void testRecordStructuredLog() {
+        LogController controller = new LogController();
+
+        ResponseEntity<String> response = controller.recordStructuredLog("123", "登录");
+
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals("结构化日志记录成功", response.getBody());
     }
-} 
+
+    @Test
+    void testRecordLogWithDifferentLevels() {
+        LogController controller = new LogController();
+
+        // 测试 debug 级别
+        ResponseEntity<String> debugResponse = controller.recordLog("debug", "debug消息");
+        assertEquals(200, debugResponse.getStatusCode().value());
+
+        // 测试 warn 级别
+        ResponseEntity<String> warnResponse = controller.recordLog("warn", "warn消息");
+        assertEquals(200, warnResponse.getStatusCode().value());
+
+        // 测试 error 级别
+        ResponseEntity<String> errorResponse = controller.recordLog("error", "error消息");
+        assertEquals(200, errorResponse.getStatusCode().value());
+    }
+}

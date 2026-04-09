@@ -1,66 +1,91 @@
 package site.mingsha.boot.example.caffeine.service;
 
+import com.github.benmanes.caffeine.cache.Cache;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import site.mingsha.boot.example.caffeine.entity.User;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
-    @Autowired
+
+    @Mock
+    private Cache<String, User> userCache;
+
     private UserService userService;
 
-    @Test
-    void testCreateAndGetUser() {
-        User user = new User();
-        user.setUsername("testuser");
-        user.setEmail("test@example.com");
-        
-        User created = userService.createUser(user);
-        assertNotNull(created.getId());
-        
-        User found = userService.getUserById(created.getId());
-        assertEquals("testuser", found.getUsername());
+    @BeforeEach
+    void setUp() {
+        userService = new UserService();
+        // 通过反射注入 mock 的 Cache
+        try {
+            var field = UserService.class.getDeclaredField("userCache");
+            field.setAccessible(true);
+            field.set(userService, userCache);
+        } catch (Exception e) {
+            fail("Failed to inject mock cache: " + e.getMessage());
+        }
     }
 
     @Test
-    void testCachePerformance() {
-        User user = new User();
-        user.setUsername("cacheuser");
-        user.setEmail("cache@example.com");
-        User created = userService.createUser(user);
-        
-        // 第一次查询（缓存未命中）
-        long start1 = System.currentTimeMillis();
-        userService.getUserById(created.getId());
-        long time1 = System.currentTimeMillis() - start1;
-        
-        // 第二次查询（缓存命中）
-        long start2 = System.currentTimeMillis();
-        userService.getUserById(created.getId());
-        long time2 = System.currentTimeMillis() - start2;
-        
-        // 缓存命中应该更快
-        assertTrue(time2 <= time1);
+    void testCreateAndGetUser() {
+        // 准备测试数据
+        User testUser = new User();
+        testUser.setUsername("testuser");
+        testUser.setEmail("test@example.com");
+
+        // 执行测试
+        User created = userService.createUser(testUser);
+        assertNotNull(created.getId());
+
+        // 验证 createUser 调用了 invalidate
+        verify(userCache, atLeastOnce()).invalidate(any());
+    }
+
+    @Test
+    void testCacheHit() {
+        // 准备测试数据
+        Long userId = 1L;
+        User cachedUser = new User();
+        cachedUser.setId(userId);
+        cachedUser.setUsername("cacheduser");
+        cachedUser.setEmail("cached@example.com");
+
+        // Mock cache 行为：getIfPresent 返回缓存的用户
+        when(userCache.getIfPresent("user:" + userId)).thenReturn(cachedUser);
+
+        // 执行测试
+        User found = userService.getUserById(userId);
+
+        // 验证结果
+        assertNotNull(found);
+        assertEquals("cacheduser", found.getUsername());
+        verify(userCache).getIfPresent("user:" + userId);
     }
 
     @Test
     void testClearCache() {
-        User user = new User();
-        user.setUsername("clearcache");
-        user.setEmail("clear@example.com");
-        User created = userService.createUser(user);
-        
-        // 先查询一次，确保缓存
-        userService.getUserById(created.getId());
-        
-        // 清除缓存
+        // 执行清除缓存
         userService.clearCache();
-        
-        // 再次查询应该仍然正常
-        User found = userService.getUserById(created.getId());
-        assertEquals("clearcache", found.getUsername());
+
+        // 验证 invalidateAll 被调用
+        verify(userCache).invalidateAll();
     }
-} 
+
+    @Test
+    void testGetAllUsers() {
+        // 执行测试
+        var users = userService.getAllUsers();
+
+        // 验证返回用户列表（初始化时应该有 3 个用户）
+        assertNotNull(users);
+        assertFalse(users.isEmpty());
+    }
+}

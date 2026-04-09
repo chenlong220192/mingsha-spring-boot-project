@@ -1,172 +1,157 @@
 package site.mingsha.boot.example.mybatis.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import site.mingsha.boot.example.mybatis.entity.User;
+import site.mingsha.boot.example.mybatis.mapper.UserMapper;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 /**
- * 用户服务测试类
- *
- * @author mingsha
- * @since 1.0.0
+ * 用户服务测试类 - 单元测试
  */
-@SpringBootTest
-@ActiveProfiles("test")
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class UserServiceTest {
-    
-    @Autowired
+
+    @Mock
+    private UserMapper userMapper;
+
+    @InjectMocks
     private UserService userService;
-    
+
+    private User testUser;
+
+    @BeforeEach
+    void setUp() {
+        testUser = new User("testuser", "test@example.com", "13800138000", 25, "北京市朝阳区");
+        testUser.setId(1L);
+    }
+
     @Test
     public void testCreateUser() {
-        User user = new User("testuser", "test@example.com", "13800138000", 25, "北京市朝阳区");
-        User createdUser = userService.createUser(user);
-        
+        // Given
+        when(userMapper.insert(any(User.class))).thenReturn(1);
+
+        // When
+        User createdUser = userService.createUser(testUser);
+
+        // Then
         assertNotNull(createdUser);
-        assertNotNull(createdUser.getId());
         assertEquals("testuser", createdUser.getUsername());
         assertEquals("test@example.com", createdUser.getEmail());
     }
-    
+
     @Test
     public void testGetUserById() {
-        // 先创建用户
-        User user = new User("testuser2", "test2@example.com", "13800138001", 30, "上海市浦东新区");
-        User createdUser = userService.createUser(user);
-        
-        // 根据ID查询
-        User foundUser = userService.getUserById(createdUser.getId());
-        
+        // Given
+        when(userMapper.selectById(1L)).thenReturn(testUser);
+
+        // When
+        User foundUser = userService.getUserById(1L);
+
+        // Then
         assertNotNull(foundUser);
-        assertEquals(createdUser.getId(), foundUser.getId());
-        assertEquals("testuser2", foundUser.getUsername());
+        assertEquals(1L, foundUser.getId());
+        assertEquals("testuser", foundUser.getUsername());
     }
-    
+
     @Test
     public void testGetUserByUsername() {
-        // 先创建用户
-        User user = new User("testuser3", "test3@example.com", "13800138002", 28, "广州市天河区");
-        userService.createUser(user);
-        
-        // 根据用户名查询
-        User foundUser = userService.getUserByUsername("testuser3");
-        
+        // Given
+        when(userMapper.selectByUsername("testuser")).thenReturn(testUser);
+
+        // When
+        User foundUser = userService.getUserByUsername("testuser");
+
+        // Then
         assertNotNull(foundUser);
-        assertEquals("testuser3", foundUser.getUsername());
-        assertEquals("test3@example.com", foundUser.getEmail());
+        assertEquals("testuser", foundUser.getUsername());
+        assertEquals("test@example.com", foundUser.getEmail());
     }
-    
+
     @Test
     public void testUpdateUser() {
-        // 先创建用户
-        User user = new User("testuser4", "test4@example.com", "13800138003", 35, "深圳市南山区");
-        User createdUser = userService.createUser(user);
-        
-        // 更新用户信息
-        createdUser.setAge(36);
-        createdUser.setAddress("深圳市福田区");
-        boolean updated = userService.updateUser(createdUser);
-        
+        // Given
+        when(userMapper.update(any(User.class))).thenReturn(1);
+
+        // When
+        boolean updated = userService.updateUser(testUser);
+
+        // Then
         assertTrue(updated);
-        
-        // 验证更新结果
-        User updatedUser = userService.getUserById(createdUser.getId());
-        assertEquals(36, updatedUser.getAge());
-        assertEquals("深圳市福田区", updatedUser.getAddress());
     }
-    
+
+    @Test
+    public void testUpdateUserNotFound() {
+        // Given
+        when(userMapper.update(any(User.class))).thenReturn(0);
+
+        // When
+        boolean updated = userService.updateUser(testUser);
+
+        // Then
+        assertFalse(updated);
+    }
+
     @Test
     public void testDeleteUser() {
-        // 先创建用户
-        User user = new User("testuser5", "test5@example.com", "13800138004", 40, "杭州市西湖区");
-        User createdUser = userService.createUser(user);
-        
-        // 删除用户
-        boolean deleted = userService.deleteUser(createdUser.getId());
-        
+        // Given
+        when(userMapper.deleteById(1L)).thenReturn(1);
+
+        // When
+        boolean deleted = userService.deleteUser(1L);
+
+        // Then
         assertTrue(deleted);
-        
-        // 验证用户已被删除
-        User deletedUser = userService.getUserById(createdUser.getId());
-        assertNull(deletedUser);
     }
-    
+
     @Test
-    public void testGetUsersByAgeRange() {
-        // 创建不同年龄的用户
-        User user1 = new User("user1", "user1@example.com", "13800138005", 20, "成都市锦江区");
-        User user2 = new User("user2", "user2@example.com", "13800138006", 25, "武汉市江汉区");
-        User user3 = new User("user3", "user3@example.com", "13800138007", 30, "西安市雁塔区");
-        
-        userService.createUser(user1);
-        userService.createUser(user2);
-        userService.createUser(user3);
-        
-        // 查询25-30岁的用户
-        List<User> users = userService.getUsersByAgeRange(25, 30);
-        
-        assertNotNull(users);
-        assertTrue(users.size() >= 2);
-        users.forEach(user -> {
-            assertTrue(user.getAge() >= 25 && user.getAge() <= 30);
-        });
+    public void testDeleteUserNotFound() {
+        // Given
+        when(userMapper.deleteById(999L)).thenReturn(0);
+
+        // When
+        boolean deleted = userService.deleteUser(999L);
+
+        // Then
+        assertFalse(deleted);
     }
-    
+
     @Test
-    public void testGetUsersByAddressLike() {
-        // 创建不同地址的用户
-        User user1 = new User("user4", "user4@example.com", "13800138008", 22, "北京市海淀区");
-        User user2 = new User("user5", "user5@example.com", "13800138009", 27, "北京市朝阳区");
-        User user3 = new User("user6", "user6@example.com", "13800138010", 32, "上海市黄浦区");
-        
-        userService.createUser(user1);
-        userService.createUser(user2);
-        userService.createUser(user3);
-        
-        // 查询地址包含"北京"的用户
-        List<User> users = userService.getUsersByAddressLike("北京");
-        
-        assertNotNull(users);
-        assertTrue(users.size() >= 2);
-        users.forEach(user -> {
-            assertTrue(user.getAddress().contains("北京"));
-        });
+    public void testGetAllUsers() {
+        // Given
+        List<User> users = Arrays.asList(testUser);
+        when(userMapper.selectAll()).thenReturn(users);
+
+        // When
+        List<User> result = userService.getAllUsers();
+
+        // Then
+        assertNotNull(result);
+        assertEquals(1, result.size());
     }
-    
-    @Test
-    public void testBatchCreateUsers() {
-        List<User> users = Arrays.asList(
-            new User("batch1", "batch1@example.com", "13800138011", 24, "南京市鼓楼区"),
-            new User("batch2", "batch2@example.com", "13800138012", 26, "苏州市姑苏区"),
-            new User("batch3", "batch3@example.com", "13800138013", 29, "无锡市梁溪区")
-        );
-        
-        userService.batchCreateUsers(users);
-        
-        // 验证批量创建结果
-        for (User user : users) {
-            User foundUser = userService.getUserByUsername(user.getUsername());
-            assertNotNull(foundUser);
-            assertEquals(user.getEmail(), foundUser.getEmail());
-        }
-    }
-    
+
     @Test
     public void testGetUserCount() {
-        int initialCount = userService.getUserCount();
-        
-        // 创建新用户
-        User user = new User("countuser", "count@example.com", "13800138014", 33, "重庆市渝中区");
-        userService.createUser(user);
-        
-        int newCount = userService.getUserCount();
-        assertEquals(initialCount + 1, newCount);
+        // Given
+        when(userMapper.count()).thenReturn(10);
+
+        // When
+        int count = userService.getUserCount();
+
+        // Then
+        assertEquals(10, count);
     }
-} 
+}

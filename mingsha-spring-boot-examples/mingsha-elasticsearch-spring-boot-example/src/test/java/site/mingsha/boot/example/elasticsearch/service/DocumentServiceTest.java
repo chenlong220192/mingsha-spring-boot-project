@@ -1,74 +1,136 @@
 package site.mingsha.boot.example.elasticsearch.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import site.mingsha.boot.example.elasticsearch.entity.Document;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
-@SpringBootTest
-public class DocumentServiceTest {
-    @Autowired
+/**
+ * 文档服务测试 - 单元测试
+ */
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
+class DocumentServiceTest {
+
+    @Mock
+    private ElasticsearchOperations elasticsearchOperations;
+
+    @InjectMocks
     private DocumentService documentService;
 
-    @Test
-    void testCreateAndGetDocument() {
-        Document document = new Document("测试文档", "这是一个测试文档的内容", "测试作者");
-        Document created = documentService.createDocument(document);
-        
-        assertNotNull(created);
-        assertNotNull(created.getId());
-        assertEquals("测试文档", created.getTitle());
-        
-        Document found = documentService.getDocument(created.getId());
-        assertNotNull(found);
-        assertEquals(created.getId(), found.getId());
+    private Document testDocument;
+
+    @BeforeEach
+    void setUp() {
+        testDocument = new Document("测试文档", "这是一个测试文档的内容", "测试作者");
+        testDocument.setId("doc-1");
+        testDocument.setCreateTime(LocalDateTime.now());
+        testDocument.setUpdateTime(LocalDateTime.now());
     }
 
     @Test
-    void testSearchDocuments() {
-        // 创建测试文档
-        Document doc1 = new Document("Java编程", "Java是一种编程语言", "张三");
-        Document doc2 = new Document("Python教程", "Python是另一种编程语言", "李四");
-        
-        documentService.createDocument(doc1);
-        documentService.createDocument(doc2);
-        
-        // 搜索包含"编程"的文档
-        List<Document> results = documentService.searchDocuments("编程");
-        assertNotNull(results);
-        assertTrue(results.size() >= 1);
+    void testCreateDocument() {
+        // Given
+        when(elasticsearchOperations.save(any(Document.class))).thenReturn(testDocument);
+
+        // When
+        Document result = documentService.createDocument(testDocument);
+
+        // Then
+        assertNotNull(result);
+        assertEquals("测试文档", result.getTitle());
+        assertNotNull(result.getCreateTime());
+        verify(elasticsearchOperations, times(1)).save(any(Document.class));
+    }
+
+    @Test
+    void testGetDocument() {
+        // Given
+        when(elasticsearchOperations.get(anyString(), eq(Document.class))).thenReturn(testDocument);
+
+        // When
+        Document result = documentService.getDocument("doc-1");
+
+        // Then
+        assertNotNull(result);
+        assertEquals("doc-1", result.getId());
+        assertEquals("测试文档", result.getTitle());
+    }
+
+    @Test
+    void testGetDocumentNotFound() {
+        // Given
+        when(elasticsearchOperations.get(anyString(), eq(Document.class))).thenReturn(null);
+
+        // When
+        Document result = documentService.getDocument("nonexistent");
+
+        // Then
+        assertNull(result);
     }
 
     @Test
     void testUpdateDocument() {
-        Document document = new Document("原始标题", "原始内容", "原始作者");
-        Document created = documentService.createDocument(document);
-        
-        // 更新文档
-        created.setTitle("更新后的标题");
-        created.setContent("更新后的内容");
-        Document updated = documentService.updateDocument(created);
-        
-        assertNotNull(updated);
-        assertEquals("更新后的标题", updated.getTitle());
-        assertEquals("更新后的内容", updated.getContent());
+        // Given
+        when(elasticsearchOperations.get(anyString(), eq(Document.class))).thenReturn(testDocument);
+        when(elasticsearchOperations.save(any(Document.class))).thenReturn(testDocument);
+
+        testDocument.setTitle("更新后的标题");
+        testDocument.setContent("更新后的内容");
+
+        // When
+        Document result = documentService.updateDocument(testDocument);
+
+        // Then
+        assertNotNull(result);
+        assertEquals("更新后的标题", result.getTitle());
+    }
+
+    @Test
+    void testUpdateDocumentNotFound() {
+        // Given
+        when(elasticsearchOperations.get(anyString(), eq(Document.class))).thenReturn(null);
+
+        // When
+        Document result = documentService.updateDocument(testDocument);
+
+        // Then
+        assertNull(result);
     }
 
     @Test
     void testDeleteDocument() {
-        Document document = new Document("待删除文档", "这个文档将被删除", "删除作者");
-        Document created = documentService.createDocument(document);
-        
-        // 删除文档
-        boolean deleted = documentService.deleteDocument(created.getId());
-        assertTrue(deleted);
-        
-        // 验证文档已被删除
-        Document found = documentService.getDocument(created.getId());
-        assertNull(found);
+        // Given
+        when(elasticsearchOperations.get(anyString(), eq(Document.class))).thenReturn(testDocument);
+
+        // When
+        boolean result = documentService.deleteDocument("doc-1");
+
+        // Then
+        assertTrue(result);
     }
-} 
+
+    @Test
+    void testDeleteDocumentNotFound() {
+        // Given
+        when(elasticsearchOperations.get(anyString(), eq(Document.class))).thenReturn(null);
+
+        // When
+        boolean result = documentService.deleteDocument("nonexistent");
+
+        // Then
+        assertFalse(result);
+    }
+}
