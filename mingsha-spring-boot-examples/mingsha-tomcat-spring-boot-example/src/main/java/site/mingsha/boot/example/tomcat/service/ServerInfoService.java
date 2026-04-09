@@ -2,7 +2,7 @@ package site.mingsha.boot.example.tomcat.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.embedded.tomcat.TomcatWebServer;
+import org.springframework.boot.web.server.WebServer;
 import org.springframework.stereotype.Service;
 
 import java.lang.management.ManagementFactory;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class ServerInfoService {
 
     @Autowired(required = false)
-    private TomcatWebServer tomcatWebServer;
+    private WebServer webServer;
 
     @Value("${server.servlet.context-path:/}")
     private String contextPath;
@@ -31,7 +31,7 @@ public class ServerInfoService {
         info.put("javaVersion", System.getProperty("java.version"));
         info.put("osName", System.getProperty("os.name"));
         info.put("osVersion", System.getProperty("os.version"));
-        info.put("serverPort", tomcatWebServer != null ? tomcatWebServer.getPort() : "unknown");
+        info.put("serverPort", webServer != null ? webServer.getPort() : "unknown");
         info.put("startTime", System.currentTimeMillis());
         return info;
     }
@@ -43,8 +43,8 @@ public class ServerInfoService {
         Map<String, Object> config = new HashMap<>();
         config.put("contextPath", contextPath);
         config.put("serverInfo", "Tomcat/10.0");
-        if (tomcatWebServer != null) {
-            config.put("port", tomcatWebServer.getPort());
+        if (webServer != null) {
+            config.put("port", webServer.getPort());
         } else {
             config.put("port", "unknown");
         }

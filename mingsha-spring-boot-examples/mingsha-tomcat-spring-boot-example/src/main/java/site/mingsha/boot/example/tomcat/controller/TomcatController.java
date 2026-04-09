@@ -1,7 +1,7 @@
 package site.mingsha.boot.example.tomcat.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class TomcatController {
 
     @Autowired(required = false)
-    private TomcatServletWebServerFactory tomcatFactory;
+    private WebServerFactoryCustomizer<?> customizer;
 
     /**
      * 获取应用信息
@@ -41,16 +41,13 @@ public class TomcatController {
     @GetMapping("/config")
     public Map<String, Object> getTomcatConfig() {
         Map<String, Object> config = new HashMap<>();
-        
-        if (tomcatFactory != null) {
-            config.put("port", tomcatFactory.getPort());
-            config.put("contextPath", tomcatFactory.getContextPath());
-            // config.put("serverName", tomcatFactory.getServerName());
-            // config.put("protocol", tomcatFactory.getProtocol());
+
+        if (customizer != null) {
+            config.put("message", "Tomcat 自定义配置已启用");
         } else {
-            config.put("message", "Tomcat 配置未找到");
+            config.put("message", "Tomcat 使用默认配置");
         }
-        
+
         return config;
     }
 

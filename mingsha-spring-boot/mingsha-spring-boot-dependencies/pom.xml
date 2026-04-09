@@ -27,14 +27,17 @@
         <spring-boot.version>4.0.5</spring-boot.version>
 
         <!-- 自定义模块版本 -->
-        <mingsha.kernel.version>2026.04.09</mingsha.kernel.version>
+        <mingsha.kernel.version>2026.04.09-02</mingsha.kernel.version>
 
         <!-- 数据库相关 -->
         <mybatis-spring-boot.version>3.0.4</mybatis-spring-boot.version>
         <mysql.version>9.2.0</mysql.version>
         <druid.version>1.2.25</druid.version>
-        <shardingsphere.version>5.5.1</shardingsphere.version>
+        <shardingsphere.version>5.4.1</shardingsphere.version>
         <postgresql.version>42.7.7</postgresql.version>
+        <spring-boot-starter-data-jdbc.version>${spring-boot.version}</spring-boot-starter-data-jdbc.version>
+        <spring-boot-starter-jdbc.version>${spring-boot.version}</spring-boot-starter-jdbc.version>
+        <spring-boot-jdbc.version>${spring-boot.version}</spring-boot-jdbc.version>
 
         <!-- 消息队列 -->
         <rocketmq.version>2.3.4</rocketmq.version>
@@ -75,6 +78,13 @@
 
         <!-- 验证 -->
         <validation.version>8.0.2.Final</validation.version>
+
+        <!-- AOP -->
+        <spring-aop.version>7.0.6</spring-aop.version>
+        <aspectjweaver.version>1.9.24</aspectjweaver.version>
+
+        <!-- Spring Boot Actuator & Health -->
+        <spring-boot-health.version>${spring-boot.version}</spring-boot-health.version>
     </properties>
 
     <dependencyManagement>
@@ -336,6 +346,21 @@
 
             <!-- 数据库相关 -->
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${spring-boot-starter-jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jdbc</artifactId>
+                <version>${spring-boot-starter-data-jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-jdbc</artifactId>
+                <version>${spring-boot-jdbc.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis-spring-boot.version}</version>
@@ -395,6 +420,25 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!-- AOP (Spring Boot 4.x 不再提供 starter，需单独引入) -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring-aop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
+            </dependency>
+
+            <!-- Spring Boot Health (Actuator Health API) -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-health</artifactId>
+                <version>${spring-boot-health.version}</version>
             </dependency>
 
             <!-- 搜索引擎 -->

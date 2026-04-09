@@ -33,6 +33,13 @@
 			<version>${revision}</version>
 		</dependency>
 
+		<!-- Spring Boot Health (HealthIndicator API) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-health</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>site.mingsha.boot</groupId>
 			<artifactId>mingsha-tomcat-spring-boot-starter</artifactId>
