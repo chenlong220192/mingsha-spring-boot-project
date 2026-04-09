@@ -27,7 +27,7 @@
         <spring-boot.version>4.0.5</spring-boot.version>
 
         <!-- 自定义模块版本 -->
-        <mingsha.kernel.version>2026.04.09-02</mingsha.kernel.version>
+        <mingsha.kernel.version>2026.04.09</mingsha.kernel.version>
 
         <!-- 数据库相关 -->
         <mybatis-spring-boot.version>3.0.4</mybatis-spring-boot.version>
